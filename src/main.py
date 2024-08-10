@@ -83,7 +83,13 @@ async def message_handler(message: types.Message):
         await message.answer_video(types.BufferedInputFile(temp.getvalue(), filename=filename))
 
 
+async def on_startup(bot: Bot) -> None:
+    await bot.set_webhook(f"{BASE_WEBHOOK_URL}{WEBHOOK_PATH}", secret_token=WEBHOOK_SECRET)
+
+
 def main() -> None:
+    dp.startup.register(on_startup)
+
     bot = Bot(token=config.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
     app = web.Application()
