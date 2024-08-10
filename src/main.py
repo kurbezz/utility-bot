@@ -47,6 +47,10 @@ def download(link: str):
             pass
 
 
+@dp.message(commands=['start'])
+async def start_handler(message: types.Message):
+    await message.answer('Send me a TikTok link')
+
 @dp.message()
 async def message_handler(message: types.Message):
     if message.text is None:
