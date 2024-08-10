@@ -8,6 +8,7 @@ from aiohttp import web
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
+from aiogram.filters import Command
 from tiktok_downloader import VideoInfo, tikwm, ttdownloader, tikdown, mdown, snaptik, Tikmate
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
@@ -47,7 +48,7 @@ def download(link: str):
             pass
 
 
-@dp.message(commands=['start'])
+@dp.message(Command('start'))
 async def start_handler(message: types.Message):
     await message.answer('Send me a TikTok link')
 
