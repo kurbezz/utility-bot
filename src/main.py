@@ -58,9 +58,9 @@ async def message_handler(message: types.Message):
         await message.answer('This is not a text message')
         return
 
-    tiktok_link = re.search(r'https://vt.tiktok.com/.+/', message.text)
+    tiktok_link = re.search(r'https://', message.text)
     if tiktok_link is None:
-        await message.answer('This is not a TikTok link')
+        await message.answer('This is not a link')
         return
 
     await message.answer('Downloading...')
